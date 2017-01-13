@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>conv</title>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="app">
+        <form onsubmit="return false;">
+            <div class="form-group">
+                <label for="origin"></label>
+                <textarea id="origin"  class="form-control" v-model="origin" @change="change"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" @click="gen" style="width: 100%">生成</button>
+            </div>
+        </form>
+        <div v-if="show">
+            <form onsubmit="return false">
+            <textarea class="form-control">{{ text }}</textarea>
+                </form>
+        </div>
+    </div>
+</div>
+<script>
+    Vue.component('show-data',{
+        template:''
+    });
+    var app = new Vue({
+        el:'.app',
+        data: {
+            origin: '复制这条信息，打开「手机淘宝」即可看到【才者经典玫瑰花云腿火腿紫薯现烤鲜花饼糕点...  原价19.9元，抢券立省10元】http://c.b1za.com/h.XyLZbK?cv=WyRgSaDcS8 点击链接，再选择浏览器打开；或复制这条信息，打开手机淘宝￥WyRgSaDcS8￥  http://uland.taobao.com/coupon/edetail?e=gG5re%2B3VlMYGQASttHIRqX8m5ZPRtqkHAnYd8lPHvK7yi1aSyqbpmsr9il18i9anYBNmGYXTpyECS3ppnvNaTnVva24pLpRrm4VLH9mslwwINxFqD34ZHntPrdniYk6YUdWSRTdql%2BZSrdtrUMK0f6J7%2BkHL3AEW&pagefrom=applist&scm=nulls11t12',
+            show: false,
+            result: {
+                name: '',
+                price:'',
+                coupon:'',
+                code: ''
+            },
+            text:'',
+        },
+        methods:{
+            change:function(){
+                this.show = false
+            },
+            gen:function () {
+                var self = this;
+                var code = self.origin.match(/￥.*?￥/)
+                console.log("code",code);
+                if(code.length>0){
+                    self.result.code = code[0]
+                }
+                var info = self.origin.match(/【(.*?)】/)
+                console.log("info",info);
+                var tmp = info[1].split('  ');
+                console.log('tmp', tmp)
+                if(tmp.length > 0){
+                    self.result.name = tmp[0].replace(/\./g,'')
+                    var t2 = tmp[1].split('，')
+                    if(t2.length > 1){
+                        self.result.price = t2[0]
+                        self.result.coupon = t2[1]
+                    }else{
+                        self.result.price = tmp[1]
+                    }
+                }
+                self.text = '【商品】'+self.result.name+'\n' +
+                        '【价格】'+self.result.price+'\n' +
+                        '【优惠券】'+self.result.coupon+'\n' +
+                        '【淘口令】'+self.result.code+'\n';
+
+                self.show = true
+
+            }
+        }
+    });
+</script>
+<style>
+    textarea.form-control{
+        min-height: 200px;
+    }
+</style>
+</body>
+</html>
