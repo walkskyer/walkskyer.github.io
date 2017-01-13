@@ -14,8 +14,8 @@
     <div class="app">
         <form onsubmit="return false;">
             <div class="form-group">
-                <label for="origin"></label>
-                <textarea id="origin"  class="form-control" v-model="origin" @change="change"></textarea>
+                <label for="origin">需要转换的代码</label>
+                <textarea id="origin"  class="form-control" v-model="origin" @change="change" placeholder="请粘贴代码"></textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-success" @click="gen" style="width: 100%">生成</button>
@@ -23,7 +23,8 @@
         </form>
         <div v-if="show">
             <form onsubmit="return false">
-            <textarea class="form-control">{{ text }}</textarea>
+                <label for="target">转换完成的代码</label>
+            <textarea id="target" class="form-control">{{ text }}</textarea>
                 </form>
         </div>
     </div>
@@ -35,7 +36,7 @@
     var app = new Vue({
         el:'.app',
         data: {
-            origin: '复制这条信息，打开「手机淘宝」即可看到【才者经典玫瑰花云腿火腿紫薯现烤鲜花饼糕点...  原价19.9元，抢券立省10元】http://c.b1za.com/h.XyLZbK?cv=WyRgSaDcS8 点击链接，再选择浏览器打开；或复制这条信息，打开手机淘宝￥WyRgSaDcS8￥  http://uland.taobao.com/coupon/edetail?e=gG5re%2B3VlMYGQASttHIRqX8m5ZPRtqkHAnYd8lPHvK7yi1aSyqbpmsr9il18i9anYBNmGYXTpyECS3ppnvNaTnVva24pLpRrm4VLH9mslwwINxFqD34ZHntPrdniYk6YUdWSRTdql%2BZSrdtrUMK0f6J7%2BkHL3AEW&pagefrom=applist&scm=nulls11t12',
+            origin: '',
             show: false,
             result: {
                 name: '',
