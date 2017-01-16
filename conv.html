@@ -55,7 +55,7 @@
                 var self = this;
                 var code = self.origin.match(/￥.*?￥/)
                 console.log("code",code);
-                if(code.length>0){
+                if(code && code.length>0){
                     self.result.code = code[0]
                 }
                 var info = self.origin.match(/【(.*?)】/)
@@ -72,9 +72,12 @@
                         self.result.price = tmp[1]
                     }
                 }
+                var p = self.result.price.match(/[0-9\.]+/)[0]
+                var c = self.result.coupon.match(/[0-9\.]+/)[0]
                 self.text = '【商品】'+self.result.name+'\n' +
-                        '【价格】'+self.result.price+'\n' +
-                        '【优惠券】'+self.result.coupon+'\n' +
+                        '【价格】'+p+'元\n' +
+                        '【优惠券】'+c+'元\n' +
+                        '【券后价】'+Math.round((p-c)*100)/100+'元\n' +
                         '【淘口令】'+self.result.code;
 
                 self.show = true
