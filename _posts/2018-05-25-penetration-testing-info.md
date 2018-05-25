@@ -2,7 +2,7 @@
 layout: post
 title:  "渗透测试相关资源记录"
 categories: collection
-tags:  poc,script
+tags:  poc script
 ---
 
 * content

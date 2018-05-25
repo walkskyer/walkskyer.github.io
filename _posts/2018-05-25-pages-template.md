@@ -2,7 +2,7 @@
 layout: post
 title:  "github页面模板收藏"
 categories: collection
-tags:  github pages,jekyll
+tags:  github-pages jekyll
 ---
 
 * content
