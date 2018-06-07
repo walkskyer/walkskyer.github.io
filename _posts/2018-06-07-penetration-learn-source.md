@@ -2,7 +2,7 @@
 layout: post
 # # title:  "渗透测试学习资源"
 categories: collection
-tags:  poc script
+tags:  渗透测试 学习资源
 ---
 
 渗透测试资源
