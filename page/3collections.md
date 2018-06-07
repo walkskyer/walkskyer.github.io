@@ -14,6 +14,10 @@ type: page
 
 * [echo cherishao](http://cherishao.com/)
 
+## 颜色
+
+* shell终端可以配置这个底色:#C9E0CF
+
 ## 博客
 
 * [HYG的收藏](https://gaohaoyang.github.io/collection/)
