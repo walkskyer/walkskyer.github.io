@@ -1,6 +1,6 @@
 ---
 layout: post
-# # title:  "渗透测试学习资源"
+title:  "渗透测试学习资源"
 categories: collection
 tags:  渗透测试 学习资源
 ---

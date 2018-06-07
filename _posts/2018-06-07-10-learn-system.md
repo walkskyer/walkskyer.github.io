@@ -1,6 +1,6 @@
 ---
 layout: post
-# # title:  "十大渗透测试演练系统"
+title:  "十大渗透测试演练系统"
 categories: collection
 tags:  渗透测试 学习资源 演练系统
 ---
